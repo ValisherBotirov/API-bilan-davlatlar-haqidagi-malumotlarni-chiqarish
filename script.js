@@ -96,77 +96,77 @@ let set;
 // });
 
 // =======================================================================
-// const chegaradosh = function (data, className) {
-//   let html = `
-// <article class="country ${className}">
-// <img class="country__img" src="${data.flag}" />
-// <div class="country__data">
-//  <h3 class="country__name">${data.name}</h3>
-//  <h4 class="country__region">${data.region}</h4>
-//  <p class="country__row"><span>👫</span>${(data.population / 1000000).toFixed(
-//    2
-//  )} people</p>
-//  <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
-//  <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
-//  <p class ="country__ex">✖</p>
+const chegaradosh = function (data, className) {
+  let html = `
+<article class="country ${className}">
+<img class="country__img" src="${data.flag}" />
+<div class="country__data">
+ <h3 class="country__name">${data.name}</h3>
+ <h4 class="country__region">${data.region}</h4>
+ <p class="country__row"><span>👫</span>${(data.population / 1000000).toFixed(
+   2
+ )} people</p>
+ <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+ <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+ <p class ="country__ex">✖</p>
 
-// </div>
-// </article>
-// `;
+</div>
+</article>
+`;
 
-//   countriesContainer.insertAdjacentHTML('beforeend', html);
-//   countriesContainer.style.opacity = 1;
-//   // countriesContainer.style.textAlign = 'center';
-// };
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.textAlign = 'center';
+};
 
-// const htmlError = function (err) {
-//   let div = document.createElement('div');
-//   div.innerHTML = `<h1>Xato malumot kelmoqda</h1> <h1>${err.statusText} ${err.status}`;
-//   countriesContainer.append(div);
-//   countriesContainer.style.opacity = 1;
-// };
+const htmlError = function (err) {
+  let div = document.createElement('div');
+  div.innerHTML = `<h1>Xato malumot kelmoqda</h1> <h1>${err.statusText} ${err.status}`;
+  countriesContainer.append(div);
+  countriesContainer.style.opacity = 1;
+};
 
-// const xatolik = function (response, msg) {
-//   if (!response.ok) {
-//     htmlError(response);
-//     throw new Error(`${msg} ${response.statusText}${response.status}`);
-//   }
-// };
+const xatolik = function (response, msg) {
+  if (!response.ok) {
+    htmlError(response);
+    throw new Error(`${msg} ${response.statusText}${response.status}`);
+  }
+};
 
-// const getJSON = function (url, msg) {
-//   return fetch(url).then(response => {
-//     xatolik(response, msg);
-//     return response.json();
-//   });
-// };
+const getJSON = function (url, msg) {
+  return fetch(url).then(response => {
+    xatolik(response, msg);
+    return response.json();
+  });
+};
 
-// getJSON('https://restcountries.com/v2/name/uzbekistan', 'davlatni topolmadim')
-//   .then(function (res) {
-//     let [data] = res;
-//     console.log(data);
-//     chegaradosh(data);
-//     let border = data.borders[0];
-//     return border;
-//   })
-//   .then(function (bor) {
-//     console.log(bor);
-//     // fetch(`https://restcountries.com/v2/alpha/${bor}`)
-//     //   .then(function (response) {
-//     //     console.log(response);
-//     //     xatolik(response);
-//     //     return response.json();
-//     //   })
-//     getJSON(
-//       `https://restcountries.com/v2/alpha/${bor}`,
-//       `Qo'shni davlatni topolmadim`
-//     ).then(function (res) {
-//       console.log(res);
-//       let data1 = res;
-//       chegaradosh(data1);
-//     });
-//   })
-//   .catch(function (error) {
-//     alert(error);
-//   });
+getJSON('https://restcountries.com/v2/name/uzbekistan', 'davlatni topolmadim')
+  .then(function (res) {
+    let [data] = res;
+    console.log(data);
+    chegaradosh(data);
+    let border = data.borders[0];
+    return border;
+  })
+  .then(function (bor) {
+    console.log(bor);
+    // fetch(`https://restcountries.com/v2/alpha/${bor}`)
+    //   .then(function (response) {
+    //     console.log(response);
+    //     xatolik(response);
+    //     return response.json();
+    //   })
+    getJSON(
+      `https://restcountries.com/v2/alpha/${bor}`,
+      `Qo'shni davlatni topolmadim`
+    ).then(function (res) {
+      console.log(res);
+      let data1 = res;
+      chegaradosh(data1);
+    });
+  })
+  .catch(function (error) {
+    alert(error);
+  });
 
-// // xato usuli
+// xato usuli
